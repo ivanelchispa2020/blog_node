@@ -1,5 +1,5 @@
 {
-  "name": "mi_blog",
+  "name": "blog_ivan",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -17,5 +17,26 @@
     "mongoose": "^4.5.10",
     "morgan": "~1.7.0",
     "serve-favicon": "~2.3.0"
-  }
+  },
+  "description": "\"Este es un blog de prueba de Node.js y Mongo.db\"",
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivanelchispa2020/blog_node.git"
+  },
+  "keywords": [
+    "html",
+    "css",
+    "ruby",
+    "java",
+    "node"
+  ],
+  "author": "Ivan sergio lopez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ivanelchispa2020/blog_node/issues"
+  },
+  "homepage": "https://github.com/ivanelchispa2020/blog_node#readme"
 }
+
