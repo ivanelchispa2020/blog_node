@@ -3,7 +3,7 @@ mongoose.Promise = require('bluebird');  // necesario para no aparezcan errores
 var Schema=mongoose.Schema;
 
 /// conecto a la base de datos
-mongoose.connect("mongodb://localhost/Articulos",(err)=>{
+mongoose.connect("mongodb://ivan_redentor:dontetto2020@ds141088.mlab.com:41088/articulos",(err)=>{
 		if(err){
 				console.log("Error al conectar la base de datos" + err);
 		}else{

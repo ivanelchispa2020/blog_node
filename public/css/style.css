@@ -42,9 +42,16 @@ footer{
 .color2{
 	color:#FF4BEC;
 }
+
+.post-contenido{
+	font-family: "Comic Sans Ms"
+	font-size: 14px;
+}
+
 .post-contenido_2{
 	margin: 10px;
 }
+
 
 .jumbotron-ivan{
 	margin-top: -20px;
