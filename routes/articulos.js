@@ -41,8 +41,7 @@ router.post('/',(req,res,next)=>{
 					res.render('pagina_principal/body_principal',{err,err})
 				})
 
-	  }else if(req.query.busc && req.query.busc!=0){
-
+	  }else if(req.query.busc && req.query.busc!=0 && req.query.busc!='0' && req.query.busc!="'0'"){
 	  		var busca=new RegExp(req.query.busc,"gi");
 
 	  		var total_articulos=0;
