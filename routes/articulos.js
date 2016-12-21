@@ -99,14 +99,7 @@ router.get('/:id', function(req, res, next) {
 	var ultimos_articulos={};
 	Articulo.find().limit(5).sort({Fecha:-1}).then((data)=>{
 						 ultimos_articulos=data;
-						 console.log("******************************")
-						 console.log("******************************")
-						 console.log("******************************")
-						 console.log("******************************")
-						 console.log("******************************")
-						 console.log("******************************")
-						 console.log("ultimos_articulos---")
-					},(err)=>{
+						},(err)=>{
 						res.render('index',{err,err})
 					});
 
