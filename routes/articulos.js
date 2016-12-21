@@ -233,8 +233,10 @@ var ultimos_articulos={};
 					}else{
 
 					comentario.save().then((comen)=>{
-								fs.rename("public/images/avatares/" + comentario._id + "." + extension,"public/images/avatares/" + comentario._id + "." + extension);
-
+								fs.rename(req.body.file_imagen.path,"public/images/avatares/" + comentario._id + "." + extension);
+								 console.log("**************************");
+ 								console.log("**************************");
+ 								console.log(req.body.file_imagen.path);
 								},(err)=>{
 									 console.log("Ha ocurrido un error ");
 									 console.log(err);
