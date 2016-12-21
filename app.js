@@ -65,7 +65,7 @@ if (app.get('env') === 'development') {
 app.use(formidable({
   encoding: 'utf-8',
   uploadDir: '/public/images/avatares/',
-  multiples: true, // req.files to be arrays of files 
+  multiples: true // req.files to be arrays of files 
 });
 
 // production error handler
