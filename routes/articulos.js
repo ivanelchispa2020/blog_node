@@ -223,7 +223,6 @@ var ultimos_articulos={};
 
 					if(req.body.id_respuesta){
 						Comentario.update({_id:''+req.body.id_respuesta+''},{$push:{respuestas:comentario}}).then((comen)=>{
-								fs.rename(req.body.file_imagen.path,"public/images/avatares/" + comentario._id + "." + extension);
 									console.log("*************************************")
 									console.log("*************************************")
 									console.log(req.body.file_imagen)
