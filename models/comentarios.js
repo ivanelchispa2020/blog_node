@@ -1,7 +1,8 @@
 var mongoose=require("mongoose");  // requiero la libreria moongoose
 mongoose.Promise = require('bluebird');  // necesario para no aparezcan errores
 var Schema=mongoose.Schema;
-
+var fs = require('fs');
+process.env.NODE_DEBUG='fs'
 
 var comentarios_schema=new Schema({  // creo esquema de la bbdd
   Nombre:{type:String,required:true},
