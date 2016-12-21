@@ -92,13 +92,20 @@ router.get('/:id', function(req, res, next) {
 	var total_articulos=0;
 	Articulo.find().count().then((data)=>{
 		 total_articulos=data;
-	}, (err)=>{
+		}, (err)=>{
 		res.render('index',{err,err})
-})
+	})
 
 	var ultimos_articulos={};
 	Articulo.find().limit(5).sort({Fecha:-1}).then((data)=>{
 						 ultimos_articulos=data;
+						 console.log("******************************")
+						 console.log("******************************")
+						 console.log("******************************")
+						 console.log("******************************")
+						 console.log("******************************")
+						 console.log("******************************")
+						 console.log("ultimos_articulos---")
 					},(err)=>{
 						res.render('index',{err,err})
 					});
@@ -141,6 +148,12 @@ router.get('/:id', function(req, res, next) {
 });
 
 router.post('/:id', function(req, res, next) {
+var ultimos_articulos={};
+	Articulo.find().limit(5).sort({Fecha:-1}).then((data)=>{
+						 ultimos_articulos=data;
+					},(err)=>{
+						res.render('index',{err,err})
+					});
 
 						if(req.body.radio){
 							var valor_encuesta=req.body.radio;

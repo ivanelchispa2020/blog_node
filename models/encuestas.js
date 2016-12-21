@@ -19,14 +19,17 @@ module.exports=Encuesta;
 
 /*
 var encuesta={
-  Poco_interesante:6,
-  Regular:10,
-  Bueno:19,
-  Util:14,
-  Excelente:19,
-  id_articulo:24,
+  Poco_interesante:2,
+  Regular:3,
+  Bueno:11,
+  Util:4,
+  Excelente:9,
+  id_articulo:20,
   Fecha:new Date()
 }
 
 db.encuestas.insert(encuesta);
+
 */
+
+
