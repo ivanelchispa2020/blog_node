@@ -31,7 +31,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(formidable.parse({
 				encoding: 'utf-8',
-  				uploadDir: '/public/images/avatares',
+  				uploadDir: '/public/images/',
 				keepExtensions: true //mantenga la extension
 }));
 
