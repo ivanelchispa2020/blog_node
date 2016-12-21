@@ -223,9 +223,6 @@ var ultimos_articulos={};
 
 					if(req.body.id_respuesta){
 						Comentario.update({_id:''+req.body.id_respuesta+''},{$push:{respuestas:comentario}}).then((comen)=>{
-									console.log("*************************************")
-									console.log("*************************************")
-									console.log(req.body.file_imagen)
 									console.log("La respuesta se ha creado con exito..!!!");
 
 								},(err)=>{
@@ -236,8 +233,11 @@ var ultimos_articulos={};
 					}else{
 
 					comentario.save().then((comen)=>{
-								fs.rename(req.body.file_imagen.path,"public/images/avatares/" + comentario._id + "." + extension);
-								},(err)=>{
+								console.log("*************************************")
+									console.log("*************************************")
+									
+									console.log(req.body.file_imagen)
+									},(err)=>{
 									 console.log("Ha ocurrido un error ");
 									 console.log(err);
 										//res.render('index',{err,err})
