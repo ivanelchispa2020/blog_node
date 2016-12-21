@@ -37,8 +37,7 @@ app.use(formidable.parse({
 app.use('/', routes);
 app.use('/users', users);
 app.use('/articulos',articulos);
-
-
+app.use(formidable(opts));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -60,6 +59,14 @@ if (app.get('env') === 'development') {
 				});
 		});
 }
+
+
+
+app.use(formidable({
+  encoding: 'utf-8',
+  uploadDir: '/public/images/avatares/',
+  multiples: true, // req.files to be arrays of files 
+});
 
 // production error handler
 // no stacktraces leaked to user
