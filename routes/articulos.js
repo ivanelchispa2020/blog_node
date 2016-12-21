@@ -234,9 +234,8 @@ var ultimos_articulos={};
 
 					comentario.save().then((comen)=>{
 								console.log("*************************************")
-									console.log("*************************************")
-									
-									console.log(req.body.file_imagen)
+								console.log("*************************************")
+								console.log(req.body.file_imagen)
 									},(err)=>{
 									 console.log("Ha ocurrido un error ");
 									 console.log(err);
