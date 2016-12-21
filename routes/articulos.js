@@ -224,7 +224,7 @@ var ultimos_articulos={};
 					if(req.body.id_respuesta){
 						Comentario.update({_id:''+req.body.id_respuesta+''},{$push:{respuestas:comentario}}).then((comen)=>{
 								fs.rename(req.body.file_imagen.path,"public/images/avatares/" + comentario._id + "." + extension);
-									console.log("El comentario se ha creado con exito..!!!");
+									console.log("La respuesta se ha creado con exito..!!!");
 								},(err)=>{
 									 console.log("Ha ocurrido un error ");
 									 console.log(err);
@@ -234,6 +234,10 @@ var ultimos_articulos={};
 
 					comentario.save().then((comen)=>{
 								fs.rename(req.body.file_imagen.path,"public/images/avatares/" + comentario._id + "." + extension);
+									console.log("************************ ");
+									console.log("************************ ");
+									console.log("************************ ");
+									console.log(req.body.file_imagen.path);
 									console.log("El comentario se ha creado con exito..!!!");
 								},(err)=>{
 									 console.log("Ha ocurrido un error ");
