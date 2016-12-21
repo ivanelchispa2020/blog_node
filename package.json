@@ -7,7 +7,7 @@
   },
   "engines": {
     "node": "6.3.1",
-    "npm":"3.10.3"
+    "npm": "3.10.3"
   },
   "dependencies": {
     "bluebird": "^3.4.4",
@@ -20,6 +20,7 @@
     "mongodb": "^2.2.9",
     "mongoose": "^4.5.10",
     "morgan": "~1.7.0",
+    "mv": "^2.1.1",
     "serve-favicon": "~2.3.0"
   },
   "description": "\"Este es un blog de prueba de Node.js y Mongo.db\"",
@@ -43,4 +44,3 @@
   },
   "homepage": "https://github.com/ivanelchispa2020/blog_node#readme"
 }
-

@@ -7,7 +7,7 @@ var bodyParser = require('body-parser')
 var articulo=require("./models/articulos");
 var path=require("path");
 var formidable = require('express-formidable');
-
+var mv = require('mv');
 
 // rutas
 var routes = require('./routes/index');
