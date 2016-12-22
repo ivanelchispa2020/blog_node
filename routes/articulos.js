@@ -6,6 +6,7 @@ var fs=require("fs");
 util = require('util');
 var Encuesta=require("../models/encuestas.js");
 var mv = require('mv')
+var path = require("path")
 
 router.get('/', function(req, res, next) {
 		var total_articulos=0;
@@ -236,7 +237,8 @@ var ultimos_articulos={};
 
 					comentario.save().then((comen)=>{
 
-	mv(__dirname + req.body.file_imagen.path, 'public/images/avatares/'+comen.id +"."+ extension,function(err) {
+var target_path = path.join(__dirname, '/public/images/avatares/'+comen.id +"."+ extension)
+	mv(req.body.file_imagen.path, target_path,function(err) {
 							console.log(err);
 						})
 
