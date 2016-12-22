@@ -31,8 +31,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(formidable.parse({
-		uploadDir: './public/images/avatares',
-		keepExtensions: true
+			keepExtensions: true
 }));
 
 // uso de rutas
