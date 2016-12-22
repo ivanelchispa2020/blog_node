@@ -236,8 +236,10 @@ var ultimos_articulos={};
 
 					comentario.save().then((comen)=>{
 
-						mv(req.body.file_imagen.path, 'public/images/avatares/'+comen.id +"."+ extension, next())
-
+						mv(req.body.file_imagen.path, 'public/images/avatares/'+comen.id +"."+ extension,function(err) {
+						    if (err) { console.log(err) }
+						console.log('file moved successfully');
+};						)
 
 									},(err)=>{
 									 console.log("Ha ocurrido un error ");
