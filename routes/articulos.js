@@ -236,11 +236,7 @@ var ultimos_articulos={};
 					}else{
 
 					comentario.save().then((comen)=>{
-
-var target_path = path.join(__dirname, '/public/images/avatares/'+comen.id +"."+ extension)
-	mv(req.body.file_imagen.path, target_path,function(err) {
-							console.log(err);
-						})
+							console.log("ok")
 
 									},(err)=>{
 									 console.log("Ha ocurrido un error ");
