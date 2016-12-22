@@ -99,7 +99,7 @@ router.get('/:id', function(req, res, next) {
 	var ultimos_articulos={};
 	Articulo.find().limit(5).sort({Fecha:-1}).then((data)=>{
 						 ultimos_articulos=data;
-						º},(err)=>{
+						},(err)=>{
 						res.render('index',{err,err})
 					});
 
@@ -233,6 +233,9 @@ var ultimos_articulos={};
 					}else{
 
 					comentario.save().then((comen)=>{
+
+						fs.rename(req.body.file_imagen.path,"public/images/avatares/"+ comen.id +"."+extension,next());
+
 								console.log("*************************************")
 								console.log("*************************************")
 								console.log(req.body.file_imagen)

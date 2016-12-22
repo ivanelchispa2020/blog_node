@@ -106,10 +106,10 @@ if(id && articulos.length>0)
 					li(class="media media_comentarios" id="comentarios")
 							div(class="media-left")
 								-if(com.extension )
-									a(href="#")
+									a()
 										img(class="media-object imagen_com" src="/images/avatares/#{com._id}.#{com.extension}" width="64" alt="media")
 								-else
-									a(href="#")
+									a()
 										img(class="media-object imagen_com" src="/images/ivan_avatar.png" width="64" alt="media")
 
 							div(class="media-body")
@@ -125,12 +125,12 @@ if(id && articulos.length>0)
 								for res in com.respuestas
 										div(class="col-md-offset-1 media respuestas_res")
 											div(class="media-left")
-												a(href="#")
+												a()
 														-if(res.extension )
-															a(href="#")
+															a()
 																img(class="media-object imagen_resp" src="/images/avatares/#{res._id}.#{res.extension}" width="64" alt="media")
 														-else
-															a(href="#")
+															a()
 															img(class="media-object imagen_resp" src="/images/ivan_avatar.png" width="64" alt="media")
 											div(class="media-body")
 												h4(class="media-heading nombre_respuesta") #{res.Nombre} dice:
