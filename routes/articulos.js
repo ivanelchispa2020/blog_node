@@ -233,7 +233,7 @@ var ultimos_articulos={};
 					}else{
 
 					comentario.save().then((comen)=>{
-						  
+						  console.log("Salvado con exito...");
 
 									},(err)=>{
 									 console.log("Ha ocurrido un error ");
