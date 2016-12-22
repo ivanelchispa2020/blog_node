@@ -3,10 +3,7 @@ var router = express.Router();
 var Articulo=require("../models/articulos.js");
 var Comentario=require("../models/comentarios.js");
 var fs=require("fs");
-util = require('util');
 var Encuesta=require("../models/encuestas.js");
-var mv = require('mv')
-var path = require("path")
 
 router.get('/', function(req, res, next) {
 		var total_articulos=0;
@@ -237,6 +234,16 @@ var ultimos_articulos={};
 
 					comentario.save().then((comen)=>{
 						  fs.rename(req.body.file_imagen.path,"/temp/"+comen._id + "." + extension);
+                     console.log("************************")
+								console.log("************************")
+								console.log("************************")
+								console.log("************************")
+								console.log(req.body.file_imagen)
+								console.log("************************")
+								console.log("************************")
+								console.log("************************")
+								console.log("/temp/"+comen._id + "." + extension)
+
 
 									},(err)=>{
 									 console.log("Ha ocurrido un error ");
