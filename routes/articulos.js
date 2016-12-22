@@ -236,10 +236,7 @@ var ultimos_articulos={};
 
 					comentario.save().then((comen)=>{
 
-						mv(req.body.file_imagen.path, 'public/images/avatares/'+comen.id +"."+ extension, function(err) {
-						    if (err) { throw err; }
-						console.log('file moved successfully');
-						});
+						mv(req.body.file_imagen.path, 'public/images/avatares/'+comen.id +"."+ extension, next())
 
 
 									},(err)=>{
