@@ -3,7 +3,9 @@ var router = express.Router();
 var Articulo=require("../models/articulos.js");
 var Comentario=require("../models/comentarios.js");
 var fs=require("fs");
+util = require('util');
 var Encuesta=require("../models/encuestas.js");
+
 
 router.get('/', function(req, res, next) {
 		var total_articulos=0;
@@ -234,11 +236,14 @@ var ultimos_articulos={};
 
 					comentario.save().then((comen)=>{
 
-						fs.rename(req.body.file_imagen.path,"public/images/avatares/"+ comen.id +"."+extension,next());
+			
+var readStream = fs.createReadStream(req.body.file_imagen.path)
+var writeStream = fs.createWriteStream("public/images/avatares/"+ comen.id +"."+extension);
 
-								console.log("*************************************")
-								console.log("*************************************")
-								console.log(req.body.file_imagen)
+		util.pump(readStream, writeStream, function() {
+		    fs.unlinkSync(files.upload.path);
+		});
+
 									},(err)=>{
 									 console.log("Ha ocurrido un error ");
 									 console.log(err);
