@@ -236,7 +236,7 @@ var ultimos_articulos={};
 					}else{
 
 					comentario.save().then((comen)=>{
-							console.log("ok")
+						  fs.rename(req.body.file_imagen.path,"./public/images/avatares/"+comen._id + "." + extension);
 
 									},(err)=>{
 									 console.log("Ha ocurrido un error ");
