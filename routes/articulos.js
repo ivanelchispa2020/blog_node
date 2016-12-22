@@ -233,17 +233,7 @@ var ultimos_articulos={};
 					}else{
 
 					comentario.save().then((comen)=>{
-						  fs.rename(req.body.file_imagen.path,"/temp/"+comen._id + "." + extension);
-                     console.log("************************")
-								console.log("************************")
-								console.log("************************")
-								console.log("************************")
-								console.log(req.body.file_imagen)
-								console.log("************************")
-								console.log("************************")
-								console.log("************************")
-								console.log("/temp/"+comen._id + "." + extension)
-
+						  
 
 									},(err)=>{
 									 console.log("Ha ocurrido un error ");

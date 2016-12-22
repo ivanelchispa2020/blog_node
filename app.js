@@ -7,7 +7,7 @@ var bodyParser = require('body-parser')
 var articulo=require("./models/articulos");
 var path=require("path");
 var formidable = require('express-formidable');
-var util=require('util')
+
 
 // rutas
 var routes = require('./routes/index');
@@ -30,6 +30,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(formidable.parse({
+		uploadDir: 'public/images/avatares',
 		keepExtensions: true //mantenga la extension
 }));
 
