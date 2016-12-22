@@ -24,8 +24,6 @@ app.set('view engine', 'jade');
 
 // middlewares
 
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -66,7 +64,6 @@ if (app.get('env') === 'development') {
 }
 
 // production error handler
-// no stacktraces leaked to user
 app.use(function(err, req, res, next) {
 		res.status(err.status || 500);
 		res.render('error', {
