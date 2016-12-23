@@ -149,6 +149,8 @@ router.get('/:id', function(req, res, next) {
 });
 
 
+
+
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, 'public/images/avatares')
@@ -156,6 +158,7 @@ var storage = multer.diskStorage({
   filename: function (req, file, cb) {
     cb(null, req.body.txt_correo + file.originalname)
   }
+
 })
  
 var upload = multer({ storage: storage })
@@ -163,7 +166,7 @@ var upload = multer({ storage: storage })
 
 
 
-router.post('/:id', upload.any(), function(req, res, next) {
+router.post('/:id', upload.any(), function(req,res, next) {
 
 
 var ultimos_articulos={};
@@ -222,38 +225,18 @@ var ultimos_articulos={};
 
 
 					if(req.files !=null){
-                  console.log("********************************")
-                  console.log("********************************")
-                  console.log("********************************")
-                  console.log("********************************")
-                  console.log("********************************")
-							console.log("ENTRO A LOS  COMENTARIOS")
-                   console.log("********************************")
-                  console.log("********************************")
-						
-				 console.log(req.files)
-				 console.log(req.body.file_imagen)
-				 console.log(req.files.file.file_imagen)
-				 console.log(req.body)
-				 console.log(req.files.originalname)
-				 console.log(req.files.file.originalname)
-				 console.log(req.files.file_imagen.name)
-
-				 console.log(upload)
- 				
-
-
- 				 req.files.each(function(index, el) {
-									console.log(index + el)
-				 });
-
+                 
+			
+			var nombre_de_imagen="";
+			   	req.files.forEach(function(value, key) {
+					   nombre_de_imagen=value.originalname
+					})
 
 
 				// formulario comentarios
-			var extension=req.files.file.filename.split(".").pop()
+			var extension=nombre_de_imagen.split(".").pop()
 
-				console.log(extension)
-
+			
 				if(extension=="png" || extension=="jpg" || extension=="gif"){
 								var comentario=new Comentario({
 								 Nombre:req.body.txt_nombre,
@@ -262,11 +245,11 @@ var ultimos_articulos={};
 		 						 Comentario:req.body.txt_comentario,
 		  						Fecha:new Date(),
 		  						id_articulo:req.body.id_articulo,
-		  						nombre_imagen:req.files.originalname,
+		  						nombre_imagen:nombre_de_imagen,
 		  						extension:extension
 						});
 
-									console.log("valido extension")
+								
 				}else{
 						var comentario=new Comentario({
 						 Nombre:req.body.txt_nombre,
@@ -278,24 +261,24 @@ var ultimos_articulos={};
 						});
 				}
 
-					if(req.files.id_respuesta){
+          
+					if(req.body.id_respuesta){
 						Comentario.update({_id:''+req.body.id_respuesta+''},{$push:{respuestas:comentario}}).then((comen)=>{
-									console.log("La respuesta se ha creado con exito..!!!");
+								
+							console.log("*****************")
+							console.log("RESPUESTA   ")
+							console.log(req.body.id_respuesta)
+							
 
 								},(err)=>{
-									 console.log("Ha ocurrido un error ");
-									 console.log(err);
-										//res.render('index',{err,err})
+									res.render('index',{err,err})
 								});
 					}else{
 
 					comentario.save().then((comen)=>{
-						      	console.log("entro el comentario y lo salvo")
-
+						  
 									},(err)=>{
-									 console.log("Ha ocurrido un error ");
-									 console.log(err);
-										//res.render('index',{err,err})
+									 res.render('index',{err,err})
 						});
 					}
 
@@ -339,7 +322,7 @@ var ultimos_articulos={};
 					res.render('index',{err,err});
 			});
 					var comen="";
-				Comentario.find({id_articulo:id}).then((comentarios)=>{
+				Comentario.find({id_articulo:id}).sort( { _id: -1 } ).then((comentarios)=>{
 						comen=comentarios;
 				},(err)=>{
 							res.render('index',{err,err})
