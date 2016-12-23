@@ -27,7 +27,8 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-process.env.PWD = process.cwd()
+app.use(express.static(path.join(__dirname, '../public')));
+
 
 // uso de rutas
 app.use('/', routes);
