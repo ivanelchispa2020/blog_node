@@ -10,6 +10,7 @@ var comentarios_schema=new Schema({  // creo esquema de la bbdd
   Comentario:{type:String,required:true},
   Fecha:{type:Date,required:true},
   id_articulo:{type:Number,required:true},
+   nombre_imagen:{type:String},
   extension:{type:String},
   id_comentario:{type:String},
   id_respuesta:{type:String},

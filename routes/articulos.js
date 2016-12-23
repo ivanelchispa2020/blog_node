@@ -3,7 +3,15 @@ var router = express.Router();
 var Articulo=require("../models/articulos.js");
 var Comentario=require("../models/comentarios.js");
 var fs=require("fs");
+util = require('util');
 var Encuesta=require("../models/encuestas.js");
+var mv = require('mv')
+var path = require("path")
+var multer  = require('multer')
+
+
+
+
 
 router.get('/', function(req, res, next) {
 		var total_articulos=0;
@@ -140,7 +148,24 @@ router.get('/:id', function(req, res, next) {
 
 });
 
-router.post('/:id', function(req, res, next) {
+
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/images/avatares')
+  },
+  filename: function (req, file, cb) {
+    cb(null, req.body.txt_correo + file.originalname)
+  }
+})
+ 
+var upload = multer({ storage: storage })
+
+
+
+
+router.post('/:id', upload.any(), function(req, res, next) {
+
+
 var ultimos_articulos={};
 	Articulo.find().limit(5).sort({Fecha:-1}).then((data)=>{
 						 ultimos_articulos=data;
@@ -196,9 +221,38 @@ var ultimos_articulos={};
 
 
 
-					if(req.body.file_imagen){
+					if(req.files !=null){
+                  console.log("********************************")
+                  console.log("********************************")
+                  console.log("********************************")
+                  console.log("********************************")
+                  console.log("********************************")
+							console.log("ENTRO A LOS  COMENTARIOS")
+                   console.log("********************************")
+                  console.log("********************************")
+						
+				 console.log(req.files)
+				 console.log(req.body.file_imagen)
+				 console.log(req.files.file.file_imagen)
+				 console.log(req.body)
+				 console.log(req.files.originalname)
+				 console.log(req.files.file.originalname)
+				 console.log(req.files.file_imagen.name)
+
+				 console.log(upload)
+ 				
+
+
+ 				 req.files.each(function(index, el) {
+									console.log(index + el)
+				 });
+
+
+
 				// formulario comentarios
-			var extension=req.body.file_imagen.name.split(".").pop()
+			var extension=req.files.file.filename.split(".").pop()
+
+				console.log(extension)
 
 				if(extension=="png" || extension=="jpg" || extension=="gif"){
 								var comentario=new Comentario({
@@ -208,8 +262,11 @@ var ultimos_articulos={};
 		 						 Comentario:req.body.txt_comentario,
 		  						Fecha:new Date(),
 		  						id_articulo:req.body.id_articulo,
+		  						nombre_imagen:req.files.originalname,
 		  						extension:extension
 						});
+
+									console.log("valido extension")
 				}else{
 						var comentario=new Comentario({
 						 Nombre:req.body.txt_nombre,
@@ -221,7 +278,7 @@ var ultimos_articulos={};
 						});
 				}
 
-					if(req.body.id_respuesta){
+					if(req.files.id_respuesta){
 						Comentario.update({_id:''+req.body.id_respuesta+''},{$push:{respuestas:comentario}}).then((comen)=>{
 									console.log("La respuesta se ha creado con exito..!!!");
 
@@ -233,7 +290,8 @@ var ultimos_articulos={};
 					}else{
 
 					comentario.save().then((comen)=>{
-						  fs.rename(req.body.file_imagen.path,"/public/images/avatares/"+comen._id + "." + extension)
+						      	console.log("entro el comentario y lo salvo")
+
 									},(err)=>{
 									 console.log("Ha ocurrido un error ");
 									 console.log(err);

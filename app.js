@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser')
 var articulo=require("./models/articulos");
 var path=require("path");
-var formidable = require('express-formidable');
 
 
 // rutas
@@ -30,9 +29,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(formidable.parse({
-			keepExtensions: true
-}));
 
 // uso de rutas
 app.use('/', routes);
