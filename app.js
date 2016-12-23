@@ -27,8 +27,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
+process.env.PWD = process.cwd()
 
 // uso de rutas
 app.use('/', routes);
@@ -57,6 +56,9 @@ if (app.get('env') === 'development') {
 				});
 		});
 }
+
+
+
 
 // production error handler
 app.use(function(err, req, res, next) {
