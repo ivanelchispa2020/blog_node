@@ -271,13 +271,17 @@ var ultimos_articulos={};
 							
 
 								},(err)=>{
+
 									res.render('index',{err,err})
 								});
 					}else{
 
 					comentario.save().then((comen)=>{
-						  
+						  	console.log("comentario creado")
 									},(err)=>{
+										console.log("ERRROOOOOOOOOOOOOOOOOOOOOORRRRR")
+										console.log(err)
+
 									 res.render('index',{err,err})
 						});
 					}
