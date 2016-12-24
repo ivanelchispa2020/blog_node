@@ -21,12 +21,6 @@ var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-
-app.use(formidable.parse({
-	uploadDir: './images/',
-	keepExtensions : true
-}));
-
 app.set('view engine', 'jade');
 
 // middlewares
@@ -36,6 +30,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+
+
+app.use(formidable.parse({
+	uploadDir: './public/images/avatares/',
+	keepExtensions : true
+}));
+
 
 
 // uso de rutas
