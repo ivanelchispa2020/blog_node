@@ -34,7 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use(formidable.parse({
-	uploadDir: './public/images/avatares/',
+	uploadDir: './images/avatares/',
 	keepExtensions : true
 }));
 
