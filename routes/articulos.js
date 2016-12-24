@@ -216,12 +216,18 @@ var ultimos_articulos={};
 
 
 					if(req.body.file_imagen !=null){
-                
+                	
 
 				// formulario comentarios
 			var extension=nombre_de_imagen.split(".").pop()
 
-			
+							console.log("**************")
+							console.log("**************")
+							console.log("**************")
+							console.log(nombre_de_imagen)
+                	console.log(extension)
+
+
 				if(extension=="png" || extension=="jpg" || extension=="gif"){
 								var comentario=new Comentario({
 								 Nombre:req.body.txt_nombre,

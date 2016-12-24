@@ -21,8 +21,11 @@ var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
+
 app.use(formidable.parse({
-  multiples: true // req.files to be arrays of files 
+	encoding: 'utf-8',
+  	uploadDir: 'public/images/avatares/',
+	keepExtensions : true
 }));
 
 app.set('view engine', 'jade');
