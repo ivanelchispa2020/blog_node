@@ -2,13 +2,7 @@ var express = require('express');
 var router = express.Router();
 var Articulo=require("../models/articulos.js");
 var Comentario=require("../models/comentarios.js");
-var fs=require("fs");
-util = require('util');
 var Encuesta=require("../models/encuestas.js");
-var mv = require('mv')
-var path = require("path")
-var multer  = require('multer')
-
 
 
 
@@ -151,22 +145,19 @@ router.get('/:id', function(req, res, next) {
 
 
 
-var storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'public/images/avatares')
-  },
-  filename: function (req, file, cb) {
-    cb(null, req.body.txt_correo + file.originalname)
-  }
-
-})
- 
-var upload = multer({ storage: storage })
 
 
+router.post('/:id',function(req,res, next) {
 
+			  var data = req.body.file_imagen;
+          var nombres=[];
 
-router.post('/:id', upload.any(), function(req,res, next) {
+          nombres.push(data.File);
+
+         var nombre_de_imagen=data.path;
+
+			console.log("****************************")
+         console.log(nombre_de_imagen)
 
 
 var ultimos_articulos={};
@@ -224,14 +215,8 @@ var ultimos_articulos={};
 
 
 
-					if(req.files !=null){
-                 
-			
-			var nombre_de_imagen="";
-			   	req.files.forEach(function(value, key) {
-					   nombre_de_imagen=value.originalname
-					})
-
+					if(req.body.file_imagen !=null){
+                
 
 				// formulario comentarios
 			var extension=nombre_de_imagen.split(".").pop()
@@ -271,17 +256,13 @@ var ultimos_articulos={};
 							
 
 								},(err)=>{
-
 									res.render('index',{err,err})
 								});
 					}else{
 
 					comentario.save().then((comen)=>{
-						  	console.log("comentario creado")
+						  
 									},(err)=>{
-										console.log("ERRROOOOOOOOOOOOOOOOOOOOOORRRRR")
-										console.log(err)
-
 									 res.render('index',{err,err})
 						});
 					}

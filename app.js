@@ -6,7 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser')
 var articulo=require("./models/articulos");
 var path=require("path");
-
+var formidable = require('express-formidable');
+ 
 
 // rutas
 var routes = require('./routes/index');
@@ -17,8 +18,13 @@ var articulos=require('./routes/articulos');
 var app = express();
 
 
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
+app.use(formidable.parse({
+  multiples: true // req.files to be arrays of files 
+}));
+
 app.set('view engine', 'jade');
 
 // middlewares
