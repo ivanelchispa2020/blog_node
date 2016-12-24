@@ -23,7 +23,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 
 app.use(formidable.parse({
-	uploadDir: 'images/',
+	uploadDir: './images/',
 	keepExtensions : true
 }));
 
