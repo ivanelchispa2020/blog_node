@@ -23,8 +23,6 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 
 app.use(formidable.parse({
-	 encoding: 'utf-8',
-  	uploadDir: './public/images/avatares',
 	keepExtensions : true
 }));
 
