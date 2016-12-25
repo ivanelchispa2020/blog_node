@@ -149,16 +149,7 @@ router.get('/:id', function(req, res, next) {
 
 router.post('/:id',function(req,res, next) {
 
-			  var data = req.body.file_imagen;
-          var nombres=[];
-
-          nombres.push(data.File);
-
-         var nombre_de_imagen=data.path;
-
-			console.log("****************************")
-         console.log(nombre_de_imagen)
-
+		
 
 var ultimos_articulos={};
 	Articulo.find().limit(5).sort({Fecha:-1}).then((data)=>{
@@ -219,14 +210,17 @@ var ultimos_articulos={};
                 	
 
 				// formulario comentarios
+			  var data = req.body.file_imagen;
+          var nombres=[];
+
+          nombres.push(data.File);
+
+         var nombre_de_imagen=data.path;
+         var nombre_de_la_imagen=data.name
+
 			var extension=nombre_de_imagen.split(".").pop()
 
-							console.log("**************")
-							console.log("**************")
-							console.log("**************")
-							console.log(nombre_de_imagen)
-                	console.log(extension)
-
+		
 
 				if(extension=="png" || extension=="jpg" || extension=="gif"){
 								var comentario=new Comentario({
@@ -239,6 +233,13 @@ var ultimos_articulos={};
 		  						nombre_imagen:nombre_de_imagen,
 		  						extension:extension
 						});
+
+				mv(nombre_de_imagen, "public/imagenes/avatares/" + nombre_de_la_imagen, function(err){
+          if(err){
+            throw err;
+          }
+          console.log("Fichero copiado correctamente...")
+        });
 
 								
 				}else{
