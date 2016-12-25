@@ -234,9 +234,10 @@ var ultimos_articulos={};
 		  						extension:extension
 						});
 
-				mv(nombre_de_imagen, "public/imagenes/avatares/" + nombre_de_la_imagen, function(err){
+			mv(nombre_de_imagen, "public/imagenes/avatares/" + nombre_de_la_imagen, function(err){
           if(err){
-            throw err;
+            console.log("***********")
+            console.log(err)
           }
           console.log("Fichero copiado correctamente...")
         });
