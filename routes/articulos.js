@@ -3,6 +3,7 @@ var router = express.Router();
 var Articulo=require("../models/articulos.js");
 var Comentario=require("../models/comentarios.js");
 var Encuesta=require("../models/encuestas.js");
+var mv = require("mv"); 
 
 
 
@@ -220,7 +221,10 @@ var ultimos_articulos={};
 
 			var extension=nombre_de_imagen.split(".").pop()
 
-		
+			console.log("***********************************")
+			console.log(nombre_de_imagen)
+			console.log(nombre_de_la_imagen)
+
 
 				if(extension=="png" || extension=="jpg" || extension=="gif"){
 								var comentario=new Comentario({
@@ -230,18 +234,20 @@ var ultimos_articulos={};
 		 						 Comentario:req.body.txt_comentario,
 		  						Fecha:new Date(),
 		  						id_articulo:req.body.id_articulo,
-		  						nombre_imagen:nombre_de_imagen,
+		  						nombre_imagen:nombre_de_la_imagen,
 		  						extension:extension
 						});
 
-			mv(nombre_de_imagen, "public/imagenes/avatares/" + nombre_de_la_imagen, function(err){
+
+        console.log("esta por entrar al mv")
+			mv(nombre_de_imagen, "public/images/avatares/" +req.body.txt_correo +"_" + nombre_de_la_imagen, function(err){
           if(err){
             console.log("***********")
             console.log(err)
           }
           console.log("Fichero copiado correctamente...")
         });
-
+ 					console.log("salio del mv")
 								
 				}else{
 						var comentario=new Comentario({
